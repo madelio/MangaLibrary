@@ -18,7 +18,7 @@ import AddIcon from '@mui/icons-material/Add';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import { mangas } from './assets/mangas';
+import { mangas } from './components/mangas';
 
 function App() {
   // const [mangaList, setMangaList] = useState(null);
