@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/MangaLibrary/static/css/main.3a7fce10.css",
+    "main.js": "/MangaLibrary/static/js/main.aa06aae3.js",
+    "static/js/787.7e5215f8.chunk.js": "/MangaLibrary/static/js/787.7e5215f8.chunk.js",
+    "index.html": "/MangaLibrary/index.html",
+    "main.3a7fce10.css.map": "/MangaLibrary/static/css/main.3a7fce10.css.map",
+    "main.aa06aae3.js.map": "/MangaLibrary/static/js/main.aa06aae3.js.map",
+    "787.7e5215f8.chunk.js.map": "/MangaLibrary/static/js/787.7e5215f8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3a7fce10.css",
+    "static/js/main.aa06aae3.js"
+  ]
+}
