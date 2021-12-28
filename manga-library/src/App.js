@@ -8,6 +8,8 @@ import {
   ListItem,
   ListItemText,
   Avatar,
+  Paper,
+  Container,
   ListItemAvatar,
   Box
 } from '@mui/material';
@@ -16,19 +18,23 @@ import AddIcon from '@mui/icons-material/Add';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import RefreshIcon from '@mui/icons-material/Refresh';
-
+import { mangas } from './assets/mangas';
 
 function App() {
-  const [mangaList, setMangaList] = useState(null);
+  // const [mangaList, setMangaList] = useState(null);
 
-  useEffect(() => {
-    fetch('/api/user/1')
-      .then((res) => res.json())
-      .then((data) => {
-        setMangaList(data.user.mangas)
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch('/api/user/1')
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setMangaList(data.user.mangas)
+  //     });
+  // }, []);
 
+  // setMangaList(mangas);
+  console.log(mangas);
+
+  const updatedMangas = mangas.filter(manga => manga.IsUpdated);
   const handleClick = (url) => {
     window.open(url);
   }
@@ -52,34 +58,36 @@ function App() {
       <Button><AddIcon /> Add New</Button>
       <Box
         sx={{
-          width: 300,
+          width: 500,
           alignSelf: 'center'
         }}
       >
-        {!mangaList ? <div><HourglassBottomIcon /></div> :
+        <p>Total Updated: {updatedMangas.length}</p>
+        {!updatedMangas? <div><HourglassBottomIcon /></div> :
           <List>
-            {mangaList.map((manga, index) =>
-              <ListItem 
-                alignItems="center" 
-                key={index}
-                onClick={() => handleClick(manga.url)}
-              >
-                <ListItemAvatar>
-                  <Avatar src={manga.thumbnail} variant='square'/>
-                </ListItemAvatar>
-                <ListItemText
-                  primary={manga.title}
-                  secondary={
-                    <React.Fragment>
-                      {manga.latestChapter}
-                    </React.Fragment>
-                  }
-                />
-              </ListItem>
+            {updatedMangas.filter(manga => manga.IsUpdated ).map((manga, index) =>
+                <ListItem
+                  key={index}
+                  onClick={() => handleClick(manga.Url)}
+                >
+                  <ListItemAvatar>
+                    <Avatar src={manga.ImageUrl} variant='square' />
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary={manga.Title}
+                    secondary={
+                      <React.Fragment>
+                        <span><strong>Latest Chapter:</strong> {manga.LatestChapter}</span><br/>
+                        <span><strong>Current Chapter:</strong> {manga.CurrentChapter}</span>
+                      </React.Fragment>
+                    }
+                  />
+
+                </ListItem>
             )}
           </List>}
       </Box>
-      <Button><RefreshIcon/> Check Updates</Button>
+      <Button><RefreshIcon /> Check Updates</Button>
     </div>
   );
 }
